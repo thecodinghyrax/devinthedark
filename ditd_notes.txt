@@ -1,0 +1,33 @@
+Django uses the manage.py module to do many different command line tasks like start a new project or make database migrations (Example: python3 manage.py makemigrations)
+
+My project can/will have several seperate "Apps" in it. Currently there is a blog app.
+
+After making model changes:
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+
+    To see the sqlcode that it will run in the migration:
+        python3 manage.py sqlmigrate <app_name> <migration number>
+        (Example: python3 manage.py sqlmigrate blog 0001)
+
+Sample user query:
+from django.contrib.auth.models import User
+
+User.objects.all()
+User.objects.first()
+User.objects.get(id=1)
+drew = User.objects.filter(username='drewxcom')
+drew.id 
+    1
+
+Django has a special _set method for retrning all related data from a model:
+user = User.objects.get(id=1)
+user.post_set.all() # This will return all posts from said user
+
+You can also create a db entry this way:
+user.post_set.create(title="Post title 3", content="Third post content") # No need to add the author (it's using the user) and no need to save!
+
+Sample data input:
+user = User.objects.get(id=1)
+post_1 = Post(title='Blog_1', content="First post content!", author=user)
+post_1.save()
