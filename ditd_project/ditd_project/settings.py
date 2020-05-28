@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cleanup',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig' # This information is found in the apps.py file in this "App"
 ]
