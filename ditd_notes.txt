@@ -31,3 +31,6 @@ Sample data input:
 user = User.objects.get(id=1)
 post_1 = Post(title='Blog_1', content="First post content!", author=user)
 post_1.save()
+
+Ideas:
+Change the post filtering to show tags instead of authors and have have links to identicial tags

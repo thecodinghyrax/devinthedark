@@ -104,6 +104,7 @@ ENV/
 env.bak/
 venv.bak/
 ditd-env/
+dev-env/
 .vscode/
 
 # Spyder project settings
