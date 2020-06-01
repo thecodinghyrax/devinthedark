@@ -137,5 +137,14 @@ LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
+# export EMAIL_PASSWORD=wa$WuWj10@1O
+# export EMAIL_PASSWORD=sfzkxfbkhcbditln
+##### Going to need to do an initial deploy to get the domain set up and then, ssl cert and then email...dont feel like it tonight :(
