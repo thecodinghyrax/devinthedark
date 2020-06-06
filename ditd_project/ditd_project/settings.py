@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_cleanup',
     'blog.apps.BlogConfig',
-    'users.apps.UsersConfig' # This information is found in the apps.py file in this "App"
+    'users.apps.UsersConfig', # This information is found in the apps.py file in this "App"
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -132,8 +134,25 @@ STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'blog-home'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'width': 750,
+        'toolbar_Custom': [
+            ['Styles', 'CodeSnippet', 'Format', 'Bold', 'Italic', 
+            'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule'],
+            ['Smiley', 'SpecialChar'], ['Source'],
+        ],
+        'extraPlugins': 'codesnippet'
+    }
+}
 
+# Youtube plugin for ckeditor https://youtu.be/L6y6cn1XUfw?t=920
+
+LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
