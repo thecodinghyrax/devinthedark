@@ -139,15 +139,46 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
         'width': 750,
+        'disableNativeSpellChecker': False,
         'toolbar_Custom': [
-            ['Styles', 'CodeSnippet', 'Format', 'Bold', 'Italic', 
+            ['Styles', 'CodeSnippet', 'Youtube', 'Format', 'Bold', 'Italic', 
             'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
             ['Link', 'Unlink', 'Anchor'],
             ['Image', 'Table', 'HorizontalRule'],
-            ['Smiley', 'SpecialChar'], ['Source'],
+            ['Smiley', 'SpecialChar'], ['Source'], ['Notification', 'Wordcount'],
         ],
-        'extraPlugins': 'codesnippet'
-    }
+        'extraPlugins': ','.join(['codesnippet', 'youtube', 'notification', 'wordcount'])
+    }, 
+    'preview' : {
+        'toolbar': 'Preview',
+        'width': 750,
+        'height': 100,
+        'disableNativeSpellChecker': False,
+        'wordcount': {
+    'showParagraphs': False,
+    'showWordCount': True,
+    'showCharCount': True,
+    'countSpacesAsChars': False,
+    'countHTML': False,
+    'maxWordCount': 100,
+    'maxCharCount': -1
+    },
+        'toolbar_Preview': [
+            ['Styles', 'Format', 'Bold', 'Italic', 
+            'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Smiley', 'SpecialChar'], ['Source'], ['Notification', 'Wordcount'],
+        ],
+        'extraPlugins': ','.join(['notification', 'wordcount'])
+    },
+    'image': {
+    'toolbar': 'Image',
+    'width': 750,
+    'height': 100,
+    'toolbar_Image': [
+        ['Image'],
+    ],
+}, 
 }
 
 # Youtube plugin for ckeditor https://youtu.be/L6y6cn1XUfw?t=920

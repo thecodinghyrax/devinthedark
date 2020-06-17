@@ -40,21 +40,27 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'preview', 'content', 'article_image']
 
     # Here we are overriding the form_valid method that would normally get 
     # run and including a bit to set the author to the current user and
     # then running the form_valid method.
     def form_valid(self, form):
         form.instance.author = self.request.user
+        if "<p>" in form.instance.article_image:
+            print("I found a p-tag")
+            form.instance.article_image = form.instance.article_image[3:-4]
         return super().form_valid(form)
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'preview', 'content', 'article_image']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        if "<p>" in form.instance.article_image:
+            print("I found a p-tag")
+            form.instance.article_image = form.instance.article_image[3:-4]
         return super().form_valid(form)
     
     def test_func(self):
