@@ -6,14 +6,17 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
+class Topic(models.Model):
+    topic = models.CharField(max_length=30)
+    icon = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.topic
+
+
+
 class Post(models.Model):
     title = models.CharField(max_length=150, blank=False, null=False)
-    preview = RichTextField(external_plugin_resources=[(
-                                        'wordcount',
-                                        '/static/blog/ckeditor_plugins/wordcount/wordcount_1.17.6/wordcount/',
-                                        'plugin.js'                                        
-                                        )],
-                                        config_name='preview')
     content = RichTextUploadingField(blank=False, 
                                         null=False,
                                         external_plugin_resources=[(
@@ -30,6 +33,7 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    topics = models.ManyToManyField(Topic)
 
 
     def __str__(self):
@@ -40,13 +44,10 @@ class Post(models.Model):
     # redirect which will actually send the user to another page
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
+    
+    def get_post_topics(self):
+        topics = {}
 
-# class Tag(modles.Model):
-#     tag = modles.CharField(max_length=30, blank=True, null=True)
-
-#     def __str__(self):
-#         return self.tag
-
-#I getting tired but I think I need to make a table of tags and then 
-# have a one-to-many (ForignKey) relationship from Post to Tag
-# Need to work out how select from the tag table to use in the Post
+        for num, topic in enumerate(self.topics.all()):
+            topics[num] = [topic.icon, topic.topic]
+        return topics

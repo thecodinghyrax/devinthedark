@@ -1,0 +1,58 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+<div class="container">
+  <h1 class="mb-3">Posts about {{ word }} ({{ page_obj.paginator.count }})</h1>
+  {% if page_obj.paginator.count == 0 or posts.count == 0 %}
+  <br>
+  <h1>Nothing here yet...Check back at a later date for some great {{ word }} articles!</h1>
+  <br>
+  {% endif %}
+  {% for post in posts %}
+  <div class="blog-posts p-4 mb-4">
+
+    <article class="media content-section">
+      <div class="col-sm-3 text-center pt-4 w-25">
+        {{ post.article_image|safe }}
+      </div>
+      <div class="media-body">
+        <div class="article-metadata">
+  
+          <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content|safe|slice:":400" }}</p>
+      </div>
+    </article>
+    <br>
+    <hr>
+  </div>
+  {% endfor %}
+
+  {% if is_paginated %}
+  <div class="text-center">
+
+    {% if page_obj.has_previous %}
+    <a class="btn pag-style-d mb-4" href="/search/?word={{ word }}&page=1">First</a>
+    <a class="btn pag-style-d mb-4" href="/search/?word={{ word }}&page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+    {% if page_obj.number == num %}
+    <a class="btn pag-style-d mb-4" href="/search/?word={{ word }}&page={{ num }}">{{ num }}</a>
+    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+    <a class="btn pag-style-d mb-4" href="/search/?word={{ word }}&page={{ num }}">{{ num }}</a>
+    {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+    <a class="btn pag-style-d mb-4" href="/search/?word={{ word }}&page={{ page_obj.next_page_number }}">Next</a>
+    <a class="btn pag-style-d mb-4" href="/search/?word={{ word }}&page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+
+    {% endif %}
+  </div>
+
+</div>
+{% endblock content %}

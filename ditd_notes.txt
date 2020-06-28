@@ -34,3 +34,9 @@ post_1.save()
 
 Ideas:
 Change the post filtering to show tags instead of authors and have have links to identicial tags
+
+
+Addons:
+easy-thumbnails
+haystack maybe?
+ 

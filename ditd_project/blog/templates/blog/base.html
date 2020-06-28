@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{% static 'blog/main.css' %}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/atom-one-dark.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
   <script>hljs.initHighlightingOnLoad();</script>
   <link rel="shortcut icon" href="{%  static 'dev.ico' %}">
   {% if title %}
@@ -24,21 +25,42 @@
 </head>
 
 <body>
-  <header class="col-md-12">
-    <!-- <div class="page-header">
-      <a href="{% url 'blog-home' %}">
-        <span class="display-1"><sup>dev</sup></span><span class="display-5"> In The Dark</span></a>
-    </div> -->
-    <div class="title-header mb-4">
-      <!-- <img src="{% static 'blog/ditd-title-img-blank.jpg' %}" alt="Dev in the dark logo image"></div> -->
-      <!-- <img class="mx-auto d-block" src="{% static 'blog/ditd-title-img.jpg' %}" alt="Dev in the dark logo image"></div> -->
-      <img class="img-fluid mx-auto d-block title-img" src="{% static 'blog/ditd-title-img4.jpg' %}" alt="Dev in the dark logo image"></div>
-      <!-- <img src="{% static 'blog/ditd-title-img-blank.jpg' %}" alt="Dev in the dark logo image"></div> -->
-  </header>
 
-  <main role="main" class="container">
-    <div class="row">
-      <div class="col-md-8">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+
+        <a class="navbar-brand" href="{% url 'blog-home' %}"><sup>dev</sup> In the Dark</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'blog-home' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog-about' %}">About</a>
+                </li>
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0" action="/search-all/"> -->
+            <form class="form-inline my-2 my-lg-0" action="/search" method="GET">
+
+           
+                
+                <input class="form-control border-0 rounded-0" type="search" placeholder="Search" aria-label="Search" name="word">
+                <button class="btn-main rounded-0 btn btn-success my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- main section  -->
+
+   <main role="main">
+    <div class="row hero">
+      <div class="col-md-12">
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }}">{{ message }}</div>
@@ -46,23 +68,44 @@
         {% endif %}
         {% block content %}{% endblock %}
       </div>
-      <div class="col-md-4">
-        <div class="content-section">
-          <h3>Extras</h3>
-          <p class='text-muted'>What else is going on in my world.
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-light">What I'm reading</li>
-            <li class="list-group-item list-group-item-light">Resources</li>
-            <li class="list-group-item list-group-item-light">
-              <a href="https://coderadio.freecodecamp.org/">Code Radio</a></li>
-            <li class="list-group-item list-group-item-light">
-              <a href="{% url 'blog-about' %}">About</a></li>
-          </ul>
-          </p>
-        </div>
-      </div>
     </div>
-  </main>
+   </main>
+
+   <!-- footer  -->
+
+   <footer class="footer py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <a class="footer-logo" href="{% url 'blog-about' %}">Blog</a>
+                <p>This is my journey of learning, growing and creating as a person who is fascinated by coding and technology. I am not a professional developer nor have I received any formal education. All that I have learned (and continue to learn) has been from self-study and personal experience hence the blog name of “dev In The Dark”. I blog about things that interest me or have helped me overcome spicific problems.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="{% url 'blog-home' %}">Home</a></li>
+                    <!-- <li><a href="#">Terms of service</a></li>
+                    <li><a href="#">Privacy Policy - </a></li> -->
+                    <li><a href="#">Contact - Comming soon</a></li>
+                    <li><a href="#">Newsletter - Comming soon</a></li>
+                </ul>
+                <!-- <div>
+                    <h4>Newsletter</h4>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control border-0 rounded-0" type="search" placeholder="You@email.com" aria-label="Search">
+                        <button class="btn-main rounded-0 btn btn-success my-sm-0" type="submit">Sign Up</button>
+                    </form>
+                </div> -->
+            </div>
+      
+        </div>
+        <div class="w-100 credits">
+            <p>Coded by Drew Crawford &copy; 2020. All rights reserved</p>
+        </div>
+    </div>
+</footer>
+   
+
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

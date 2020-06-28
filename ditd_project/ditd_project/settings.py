@@ -138,7 +138,8 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
-        'width': 750,
+        'width': 1200,
+        'height': 600,
         'disableNativeSpellChecker': False,
         'toolbar_Custom': [
             ['Styles', 'CodeSnippet', 'Youtube', 'Format', 'Bold', 'Italic', 
@@ -173,8 +174,8 @@ CKEDITOR_CONFIGS = {
     },
     'image': {
     'toolbar': 'Image',
-    'width': 750,
-    'height': 100,
+    'width': 1200,
+    'height': 300,
     'toolbar_Image': [
         ['Image'],
     ],

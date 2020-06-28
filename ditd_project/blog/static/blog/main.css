@@ -2,7 +2,7 @@
     --pri-bkg: #0B0C10;
     --sec-bkg: #1F2833;
     --gray: #C5C6C7;
-    --primary: #66FCF1;
+    --primary: #40b646;
     --secondary: #45A290;
 }
 
@@ -77,16 +77,34 @@ img.rounded-circle {
 
 .hero-post-badges > a {
     display: block;
-    background-color: var(--pri-bkg);
-    color: var(--primary);
+    color: var(--pri-bkg);
+    background-color: var(--primary);
     font-size: 0.8rem;
 }
 
 .hero-post-content {
     position: absolute;
     bottom: 10px;
-    color: var(--primary);
+    left: 0.5rem;
+    width: 97%;
+    color: var(--gray) !important;
+    /* color: var(--pri-bkg); */
+    /* background-color: var(--primary); */
+    background-color: var(--pri-bkg);
+
 }
+.c-pri-bkg {
+    /* color: var(--pri-bkg) !important; */
+    color: var(--gray) !important;
+
+}
+
+.c-pri-bkg > i {
+    /* color: var(--pri-bkg) !important; */
+    color: var(--primary) !important;
+
+}
+
 
 /* main blog  */
 
@@ -109,12 +127,12 @@ img.rounded-circle {
     font-size: 0.9rem;
 }
 
-.blog-post  .col-sm-8 {
+.blog-post  .col-sm-9 {
     border-left: 3px solid var(--primary);
 }
 
 .badge {
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 
 .badge > a {
@@ -128,8 +146,28 @@ img.rounded-circle {
 
 .social-links {
     background-color: var(--primary);
-    color: var(--pri-bkg);
+    color: var(--sec-bkg);
     font-size: 3rem;
+}
+
+.social-links-gray {
+    color: var(--primary);
+    background-color: var(--sec-bkg);
+    font-size: 3rem;
+}
+.social-links-div-gray {
+    color: var(--primary);
+    background-color: var(--sec-bkg);
+}
+
+.social-links-dark {
+    color: var(--primary);
+    background-color: var(--pri-bkg);
+    font-size: 3rem;
+}
+.social-links-div-dark {
+    color: var(--primary);
+    background-color: var(--pri-bkg);
 }
 
 .aside-heading {
@@ -142,6 +180,16 @@ img.rounded-circle {
 
 .author {
     font-size: 0.9rem;
+}
+
+.article-symbol > i{
+    font-size: 3.5rem;
+    color: var(--primary);
+}
+
+.article-symbol-sm > i{
+    font-size: 1.5rem;
+    color: var(--primary);
 }
 
 .badges {
@@ -177,3 +225,31 @@ img.rounded-circle {
     background-color: var(--pri-bkg);
     color: var(--gray);
 }
+
+.pag-style {
+    background-color: var(--sec-bkg);
+    color: var(--gray);
+}
+
+.pag-style-d {
+    background-color: var(--pri-bkg);
+    color: var(--gray);
+}
+
+.hide-on-hover:hover {
+    display: none;
+}
+
+.show-on-hover {
+    display: none;
+}
+
+.show-on-hover:hover {
+    display: block;
+}
+
+.article_img {
+    width: 10rem !important;
+    height: 10rem !important;
+    object-fit: contain !important;
+} 
